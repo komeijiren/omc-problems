@@ -35,6 +35,8 @@ dependencies:
   state_notifier:
   freezed_annotation:
   english_words:
+  intl: ^0.17.0
+  cupertino_timer:
 
 
   # The following adds the Cupertino Icons font to your application.

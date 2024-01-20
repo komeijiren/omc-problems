@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omc/screen/home.dart';
 import 'package:omc/screen/search.dart';
 import 'package:omc/screen/timer.dart';
+import 'package:omc/screen/bookpage.dart';
 final _selectedIndex = StateProvider<int>((ref) => 0);
 class MyApp extends ConsumerWidget {
 
@@ -29,16 +30,30 @@ class MyHomePage extends ConsumerStatefulWidget{
   _MyHomePageState createState() => _MyHomePageState();
 }
 class _MyHomePageState extends ConsumerState<MyHomePage>{
-  static const _screens = [
-    home(),
-    search(),
-    timer(),
-  ];
+  late final _screens;
+  @override
+  void initState(){
+    super.initState();
+    _screens = [
+      home(search: _search,
+            book: book,
+            set: set,),
+      search(),
+      timer(),
+      bookpage(),
+    ];
+  }
   void _onItemTapped(int index) {
     ref.read(_selectedIndex.notifier).state = index;
   }
-  dynamic _search({int? index1 = 0}){
+  void _search(){
     ref.read(_selectedIndex.notifier).state = 1;
+  }
+  void book(){
+    ref.read(_selectedIndex.notifier).state = 3;
+  }
+  void set(){
+    ref.read(_selectedIndex.notifier).state = 3;
   }
 
   void _set(){

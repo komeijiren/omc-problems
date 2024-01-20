@@ -1,12 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 class home extends ConsumerWidget{
-  const home({Key? key, this.indexer}) : super(key: key);
-  final VoidCallback? indexer;
-  void _book(){
-  }
-  void _set(){
-  }
+  const home({Key? key, this.search, this.book, this.set,}) : super(key: key);
+  final VoidCallback? search;
+  final VoidCallback? book;
+  final VoidCallback? set;
   void _menu(){
 
   }
@@ -34,7 +33,7 @@ class home extends ConsumerWidget{
           child: Column(
             children: <Widget>[
               InkWell(
-                  onTap: this.indexer,
+                  onTap: this.search,
                   child: Card(
                       child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -49,7 +48,7 @@ class home extends ConsumerWidget{
                   )
               ),
               InkWell(
-                  onTap: _book,
+                  onTap: this.book,
                   child:Card(
                       child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -64,7 +63,7 @@ class home extends ConsumerWidget{
                   )
               ),
               InkWell(
-                  onTap: _set,
+                  onTap: this.set,
                   child: Card(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
