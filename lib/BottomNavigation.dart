@@ -4,7 +4,8 @@ import 'package:omc/screen/home.dart';
 import 'package:omc/screen/search.dart';
 import 'package:omc/screen/timer.dart';
 import 'package:omc/screen/bookpage.dart';
-final _selectedIndex = StateProvider<int>((ref) => 0);
+import 'package:omc/screen/set1.dart';
+import 'package:omc/provider/indexprovider.dart';
 class MyApp extends ConsumerWidget {
 
   const MyApp({super.key});
@@ -41,22 +42,20 @@ class _MyHomePageState extends ConsumerState<MyHomePage>{
       search(),
       timer(),
       bookpage(),
+      set1(),
     ];
   }
   void _onItemTapped(int index) {
-    ref.read(_selectedIndex.notifier).state = index;
+    ref.read(selectIndex.notifier).state = index;
   }
   void _search(){
-    ref.read(_selectedIndex.notifier).state = 1;
+    ref.read(selectIndex.notifier).state = 1;
   }
   void book(){
-    ref.read(_selectedIndex.notifier).state = 3;
+    ref.read(selectIndex.notifier).state = 3;
   }
   void set(){
-    ref.read(_selectedIndex.notifier).state = 3;
-  }
-
-  void _set(){
+    ref.read(selectIndex.notifier).state = 4;
   }
   void _menu(){
 
@@ -66,12 +65,22 @@ class _MyHomePageState extends ConsumerState<MyHomePage>{
   @override
   Widget build(BuildContext context) {
 
-    final _selectedIndex1 = ref.watch(_selectedIndex);
+    final _selectedIndex1 = ref.watch(selectIndex);
+    int _selectedIndex2 = 0;
+    if(_selectedIndex1>=3){
+      setState(() {
+        _selectedIndex2 = 0;
+      });
+    }else() {
+      setState(() {
+        _selectedIndex2 = _selectedIndex1;
+      });
+    };
     return Scaffold(
 
       body: _screens[_selectedIndex1],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex1,
+        currentIndex: _selectedIndex2,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),

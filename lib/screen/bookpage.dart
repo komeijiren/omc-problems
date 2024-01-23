@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:omc/provider/indexprovider.dart';
 
-final bookmarkProvider = StateProvider<Map<String, String>>((ref) => {"null":'null'});
 class bookpage extends ConsumerWidget{
   const bookpage({Key? key}) : super(key: key);
   void _menu(){
-
   }
   void vert(){
 
   }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final book = ref.watch<Map<String, String>>(bookmarkProvider); //
+    final book = ref.watch<Map<String, String>>(bookmarkProvider);
+    final url = ref.read<String>(urlprovider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -32,11 +32,25 @@ class bookpage extends ConsumerWidget{
             itemCount: book.length,
             itemBuilder: (context, index) {
             var key = book.keys.elementAt(index);
-             return Card(
-            child: ListTile(
-            title: Text('$key : ${book[key]}'),
+             return InkWell(
+               onTap: (){
+                 ref.read(urlprovider.notifier).state = '${book[key]}';
+                ref.read(selectIndex.notifier).state = 1;
+            }
+               ,
+                 child: Card(
+                 child:
+                Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget> [
+            ListTile(
+            title: Text('$key'),
+            subtitle: Text('${book[key]}'),
             ),
-            );
+              ]
+            ),
+            ),
+             );
             }
         )
       ),

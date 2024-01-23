@@ -20,10 +20,7 @@ class _timerState extends State<timer>  with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('タイマー'),
         leading: IconButton(
             onPressed: _menu,
@@ -39,46 +36,8 @@ class _timerState extends State<timer>  with SingleTickerProviderStateMixin{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(20),
-              width: 200,
-              height: 200,
-              child: CupertinoTimer(
-                duration: Duration(minutes: 1),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              width: 200,
-              height: 200,
-              child: CupertinoTimer(
-                duration: Duration(minutes: 1),
-                startOnInit: true,
-                timeStyle: TextStyle(
-                    fontFamily: 'Avenir Next', fontWeight: FontWeight.bold),
-                ringColor: Colors.blue,
-                ringStroke: 10,
-                controller: this.controller,
-              ),
-            ),
-            TextButton(
-                onPressed: () {
-                  this.controller.forward();
-                },
-                child: Text("Start")),
-            TextButton(
-                onPressed: () {
-                  this.controller.stop();
-                },
-                child: Text("Pause")),
-            TextButton(
-                onPressed: () {
-                  this.controller.reset();
-                },
-                child: Text("Reset")),
-          ],
-        ),
-      ),
+            Text("On Development")
+    ]))
     );
   }
 }
