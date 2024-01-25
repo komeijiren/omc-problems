@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:omc/provider/indexprovider.dart';
 class home extends ConsumerWidget{
   const home({Key? key, this.search, this.book, this.set,}) : super(key: key);
   final VoidCallback? search;
@@ -24,7 +25,9 @@ class home extends ConsumerWidget{
             icon: Icon(Icons.menu)),
         actions: <Widget>[
           IconButton(
-              onPressed: vert,
+              onPressed: (){
+                ref.read(selectIndex.notifier).state = 5;
+              },
               icon: Icon(Icons.account_circle_outlined)
           ),
         ],

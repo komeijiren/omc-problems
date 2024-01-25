@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:omc/provider/indexprovider.dart';
 
 class set1 extends ConsumerWidget{
   const set1({Key? key}) : super(key: key);

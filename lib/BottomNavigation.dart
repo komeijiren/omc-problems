@@ -6,6 +6,7 @@ import 'package:omc/screen/timer.dart';
 import 'package:omc/screen/bookpage.dart';
 import 'package:omc/screen/set1.dart';
 import 'package:omc/provider/indexprovider.dart';
+import 'package:omc/screen/settings.dart';
 class MyApp extends ConsumerWidget {
 
   const MyApp({super.key});
@@ -43,6 +44,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage>{
       timer(),
       bookpage(),
       set1(),
+      settings(),
     ];
   }
   void _onItemTapped(int index) {

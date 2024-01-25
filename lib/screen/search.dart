@@ -24,6 +24,8 @@ class _searchState extends ConsumerState<search>{
   Widget build(BuildContext context){
     final bookmark = ref.watch<Map<String, String>>(bookmarkProvider);
     final _urlprovider = ref.read(urlprovider.notifier);
+    final _username = ref.read(username);
+    final _password = ref.read(password);
     return Scaffold(
 
         appBar: AppBar(
@@ -34,7 +36,9 @@ class _searchState extends ConsumerState<search>{
             icon: Icon(Icons.menu)),
         actions: <Widget>[
           IconButton(
-              onPressed: vert,
+              onPressed: (){
+                ref.read(selectIndex.notifier).state = 5;
+              },
               icon: Icon(Icons.account_circle_outlined)
           ),
           IconButton(
@@ -58,16 +62,20 @@ class _searchState extends ConsumerState<search>{
             controller = webViewController;
           },
           onPageFinished: (url) {
-           // if(url == 'https://onlinemathcontest.com/login/') {
-           //   Future.delayed(Duration(seconds: 3), () {
-           //     controller.runJavascript(
-           //         "document.getElementById('password').value='';"
-           //             "document.getElementById('display_name').value='';"
-            //            "document.querySelector('div div button').click();");
-            //    controller.loadUrl(_urlprovider.state);
-            //  });
-            //}
-            Future.delayed(Duration(seconds: 5), ()
+            if(url == 'https://onlinemathcontest.com/login/'
+            && ref.watch(autoLogin) == true){
+              Future.delayed(Duration(milliseconds: 50), () {
+                controller.runJavascript(
+                    "document.getElementById('password').value='" + _password + "';"
+                        "document.getElementById('display_name').value='" + _username + "';");
+              },
+              );
+              Future.delayed(Duration(milliseconds: 100), () {
+            controller.runJavascript("document.querySelector('div div button').click();");
+            },
+              );
+          }
+            Future.delayed(Duration(milliseconds: 100), ()
             {
               if (url != 'https://onlinemathcontest.com/problems'
                   && url != 'https://onlinemathcontest.com/problems/'

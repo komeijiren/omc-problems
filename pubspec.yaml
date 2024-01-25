@@ -40,6 +40,7 @@ dependencies:
   cupertino_timer:
   cupertino_icons: ^1.0.2
   flutter_webview_plugin:
+  settings_ui:
 
 
 dev_dependencies:

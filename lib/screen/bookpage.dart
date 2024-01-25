@@ -7,12 +7,10 @@ class bookpage extends ConsumerWidget{
   void _menu(){
   }
   void vert(){
-
   }
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final book = ref.watch<Map<String, String>>(bookmarkProvider);
-    final url = ref.read<String>(urlprovider);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -22,7 +20,9 @@ class bookpage extends ConsumerWidget{
             icon: Icon(Icons.menu)),
         actions: <Widget>[
           IconButton(
-              onPressed: vert,
+              onPressed: (){
+                ref.read(selectIndex.notifier).state = 5;
+              },
               icon: Icon(Icons.account_circle_outlined)
           ),
         ],

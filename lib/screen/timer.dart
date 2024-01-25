@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cupertino_timer/cupertino_timer.dart';
-
-class timer extends StatefulWidget {
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:omc/provider/indexprovider.dart';
+class timer extends ConsumerStatefulWidget {
   const timer({Key? key}) : super(key: key);
   @override
   _timerState createState() => _timerState();
 }
-class _timerState extends State<timer>  with SingleTickerProviderStateMixin{
+class _timerState extends ConsumerState<timer>  with SingleTickerProviderStateMixin{
   late AnimationController controller;
   void _menu() {
-  }
-  void vert() {
   }
   void initState() {
     super.initState();
@@ -27,7 +26,9 @@ class _timerState extends State<timer>  with SingleTickerProviderStateMixin{
             icon: Icon(Icons.menu)),
         actions: <Widget>[
           IconButton(
-              onPressed: vert,
+              onPressed: (){
+                ref.read(selectIndex.notifier).state = 5;
+              },
               icon: Icon(Icons.account_circle_outlined)
           ),
         ],
