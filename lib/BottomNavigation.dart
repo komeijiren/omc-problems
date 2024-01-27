@@ -7,6 +7,7 @@ import 'package:omc/screen/bookpage.dart';
 import 'package:omc/screen/set1.dart';
 import 'package:omc/provider/indexprovider.dart';
 import 'package:omc/screen/settings.dart';
+import 'package:omc/screen/advancedsearch.dart';
 class MyApp extends ConsumerWidget {
 
   const MyApp({super.key});
@@ -45,6 +46,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage>{
       bookpage(),
       set1(),
       settings(),
+      adsearch(),
     ];
   }
   void _onItemTapped(int index) {

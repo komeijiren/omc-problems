@@ -32,7 +32,12 @@ class bookpage extends ConsumerWidget{
             itemCount: book.length,
             itemBuilder: (context, index) {
             var key = book.keys.elementAt(index);
-             return InkWell(
+             return Dismissible(
+                 key: Key('$key'),
+                  onDismissed: (direction) {
+                   book.remove(key);
+                 },
+               child : InkWell(
                onTap: (){
                  ref.read(urlprovider.notifier).state = '${book[key]}';
                 ref.read(selectIndex.notifier).state = 1;
@@ -47,10 +52,13 @@ class bookpage extends ConsumerWidget{
             title: Text('$key'),
             subtitle: Text('${book[key]}'),
             ),
+
               ]
             ),
             ),
+             )
              );
+
             }
         )
       ),

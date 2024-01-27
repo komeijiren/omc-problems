@@ -80,7 +80,25 @@ class home extends ConsumerWidget{
                         ],
                       )
                   )
+              ),
+              ref.watch(advancemode) == true ?
+              InkWell(
+                  onTap: (){ref.read(selectIndex.notifier).state = 6;},
+                  child: Card(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(Icons.folder),
+                            title: Text('アドバンスモード'),
+                            subtitle: Text('アドバンスモード'),
+
+                          )
+                        ],
+                      )
+                  )
               )
+                  : Container(),
             ],
           )
       ),

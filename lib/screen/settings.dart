@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:omc/provider/indexprovider.dart';
-import 'package:settings_ui/settings_ui.dart';
 import 'package:flutter/cupertino.dart';
 class settings extends ConsumerStatefulWidget{
   const settings({Key? key}) : super(key: key);
