@@ -61,11 +61,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage>{
   void set(){
     ref.read(selectIndex.notifier).state = 4;
   }
-  void _menu(){
-
-  }
-  void vert(){
-  }
   @override
   Widget build(BuildContext context) {
 
